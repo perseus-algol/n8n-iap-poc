@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "start": "DOTENV_CONFIG_PATH=../../.env ts-node-dev -r dotenv/config --respawn ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "serve-handler": "^6.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/serve-handler": "^6.1.1",
+    "rimraf": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4"
+  }
+}

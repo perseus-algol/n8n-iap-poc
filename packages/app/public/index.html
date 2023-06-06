@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <a href="#" onclick="return redirectToURLWithHeader(event, 'http://localhost/app')">Click me</a>
+
+  <script>
+    const token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im15a2V5In0.eyJpZCI6ImE4ZGIyNDBhLWU1ZjEtNGJmMS04NzdmLTAyODY2MzgzNGU4MCIsInBhc3N3b3JkIjoiNDRmMjVlZjVkYjI2M2M4ZDhmYzU4MWNiN2IwZjk0MmY0OTUwZGMzNWJmNGQxYWVmY2YyMjZlZTMwZmRjODQzNiIsImVtYWlsIjoiYUBhLmFhIiwiaWF0IjoxNjg1NzI4MTc5LCJleHAiOjIwMDEzMDQxNzl9.bWrHtWHSjQuwFwX2fA_EFaL7rxL75z_CV6Bs_dEdxeszQqfashillyFM8geHaee0Gk9-APgO0ES7LlDD0WS945ChztYfgeirP_Wb7vJnl2Nu4gfE-NvqvbrhWc6J23Ge3prCXOwkhtkQufQeV7gAA7xIqfJZSfwX4QAW0jwbBkNsCBr_wQxkiKlIsF_xchB9O-ZXWIYLbgamtzOfB1M44LvRf0wl7KcXHSgVVx9nd74hDWraW9n7NIqDiu5hyAeplxbmOf0Il9rwgwRAjYWwd7I2eNj2yyTeg8YoErWr4wSPuKPiLp36KRca6RIyDtoCk9sQeGPP2FJ6q2P9wtvc4Q";
+    function redirectToURLWithHeader(event, url) {
+      event.preventDefault();
+      console.log(url);
+      fetch(url, {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
+      .then(response => {
+        console.log('success');
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+    }
+    function redirectToURLWithHeader2(event, url) {
+        event.preventDefault();
+        console.log(url);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // Redirect to the specified URL
+            window.location.href = url;
+          }
+        };
+        xhr.send();
+      }
+  </script>
+  
+</body>
+</html>

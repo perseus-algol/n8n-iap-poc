@@ -1,0 +1,14 @@
+{
+  "name": "n8n-embed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "jwks": "npm start --prefix packages/jwks",
+    "sso": "npm start --prefix packages/sso",
+    "app": "npm start --prefix packages/app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
