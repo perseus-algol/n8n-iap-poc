@@ -45,6 +45,20 @@ app.get("/login", async (req, res) => {
   }
 })
 
+app.get("/token", async (req, res) => {
+  const userId = req.query.userId;
+  const user = users.find(i => i.id == userId);
+  if (user) {
+    const accessToken = generateAccessToken(user);
+    console.log('User: ', user);
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.json({accessToken});
+  } else {
+    // Respond with 401 Unauthorized
+    res.status(401).json({ error: 'Unauthorized' });
+  }
+})
+
 app.listen(port, () => { 
   console.log(`Authorization Server running on ${port}...`)
 });

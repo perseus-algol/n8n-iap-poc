@@ -11,4 +11,4 @@ Working example: `google-chrome --ignore-certificate-errors --proxy-bypass-list=
 
 ## Prevent caching in browser
 
-Open Dev Tools, Settings / Disable caching.
+Open Dev Tools, Network tab, Check "Disable caching".
