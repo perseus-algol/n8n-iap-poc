@@ -2,13 +2,18 @@ server {
   listen 80;
   listen [::]:80;
   server_name localhost;
-
+  proxy_cache off;
+  
   location /n8n/ {
     proxy_pass http://localhost:5678/;
   }
 
+  location /sso/ {
+    proxy_pass http://localhost:3002/;
+  }
+
   location / {
-    proxy_pass http://localhost:3001/;
+    proxy_pass http://localhost:3003/;
   }
 
   error_page 500 502 503 504 /50x.html;

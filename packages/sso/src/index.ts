@@ -19,7 +19,7 @@ function generateAccessToken(user: object) {
 
 const users = readUsers();
 
-const publicKeyStr = fs.readFileSync('keys-demo/private.pem');
+const publicKeyStr = fs.readFileSync('../../keys-demo/private.pem');
 
 const port = process.env.SSO_PORT  //get the port number from .env file
 
@@ -30,13 +30,14 @@ app.use(express.json()) //This middleware will allow us to pull req.body.<params
 app.get("/login", async (req, res) => {
   const userId = req.query.userId;
   const user = users.find(i => i.id == userId);
-
   if (user) {
     const accessToken = generateAccessToken(user);
-
+    console.log('User: ', user);
     // Redirect to application with header
-    res.redirect(301, `http://localhost:${process.env.APP_PORT}`);
     res.setHeader('Authorization', 'Bearer ' + accessToken);
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('X-Custom-Header', 'value');
+    res.redirect(302, 'http://localhost/');
     res.end();
   } else {
     // Respond with 401 Unauthorized
